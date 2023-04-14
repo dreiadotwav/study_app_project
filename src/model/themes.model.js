@@ -1,6 +1,8 @@
 const {DataTypes} = require('sequelize');
 const {sequelize} = require("../connection");
 
+//uwu
+
 const ThemeModel = sequelize.define('theme', {
     id:{
         type: DataTypes.INTEGER,
