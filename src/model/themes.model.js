@@ -1,7 +1,7 @@
 const {DataTypes} = require('sequelize');
 const {sequelize} = require("../connection");
 
-//uwu
+//uwu owo
 
 const ThemeModel = sequelize.define('theme', {
     id:{
