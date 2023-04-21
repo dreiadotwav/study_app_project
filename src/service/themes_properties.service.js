@@ -1,76 +1,91 @@
-const {sequelize} = require("../connection");
-const {Themes_propertiesModel} = require("../model/themes_properties.model");
 
-const listar = async function(textoBuscar) {
-    console.log("listar themes_properties");
-    try{
-        const themes_properties = await sequelize.query(`SELECT * FROM themes_properties 
-                                            WHERE 1=1
-                                            AND UPPER(name) LIKE UPPER('%${textoBuscar}') 
-                                            AND deleted IS false
-                                            ORDER BY id`);
-    
-        if(themes_properties && themes_properties[0]){
-            return themes_properties[0];
-        }else{
-            return [];
-        }
-    }catch(error){
-        console.log(error)
-        throw error
+const { sequelize } = require("../connection");
+const { ThemePropertiesModel } = require("../model/theme_properties.model");
+
+const listar = async function (textoBuscar) {
+  console.log("listar themes properties service");
+
+  try {
+    const theme_properties = await sequelize.query(
+      `SELECT * FROM themes_properties 
+        WHERE 1=1
+          AND property_name LIKE '%${textoBuscar}%'
+      ORDER BY id`
+    );
+
+    if (theme_properties) {
+      
+      return theme_properties[0];
+
+    } else {
+      return [];
     }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };
 
-const actualizar = async function(id, theme_id, property_name, property_value) {
-    console.log("actualizar temas propiedades");
-    let themes_propertieoRetorno = null;
-    const data = {id, theme_id, property_name, property_value}
+const consultarPorCodigo = async function (id) {
+  console.log("Buscar theme properties service");
 
-    try{
-        let tmprExiste = null;
+  try {
 
-        if(id){
-            tmprExiste = await Themes_propertiesModel.findByPk(id);
-        }
+    const ThemePropertiesModelResult = await ThemePropertiesModel.findByPk(id);
 
-        if(tmprExiste){
-            themes_propertieoRetorno = await Themes_propertiesModel.update(data, {where: {id : id}});
-            themes_propertieoRetorno = data;
-        }else{
-            themes_propertieoRetorno = await Themes_propertiesModel.create(data);
-        }
-        return themes_propertieoRetorno;
-    }catch(error){
-        console.log(error);
-        throw error;
+    if (ThemePropertiesModelResult) {
+      
+      return ThemePropertiesModelResult;
+    } else {
+      return []
     }
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };
 
-const eliminar = async function(id) {
-    console.log("eliminar themes_properties");
-    try{
-        await Themes_propertiesModel.destroy({where: {id:id}}, {truncate: false});
-    }catch(error){
-        throw error;
+const actualizar = async function (data) {
+  console.log("actualizar themes properties service");
+  let themePropertyRetorno = null;
+  let tmsExiste = null;
+  const id = data.id;
+  try {
+    if (id) {
+      tmsExiste = await ThemePropertiesModel.findByPk(id);
     }
+    if (tmsExiste) {
+      
+      themePropertyRetorno = await ThemePropertiesModel.update(data, { where: { id: id } });
+
+    } else {
+
+      themePropertyRetorno = await ThemePropertiesModel.create(data);
+    }
+
+    return themePropertyRetorno;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };
 
-const consultarPorCodigo = async function(id) {
-    console.log("consultar por codigo");
-    try{
-        const Themes_propertiesModelResult = await Themes_propertiesModel.findByPk(id);
+const eliminar = async function (id) {
+  console.log("eliminar themes properties service");
 
-        if(Themes_propertiesModelResult){
-            return Themes_propertiesModelResult;
-        }else{
-            return [];
-        }
-    }catch(error){
-        console.log(error);
-        throw error;
-    }
+  try {
+    await ThemePropertiesModel.destroy( { where: { id: id } });
+
+    return true;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };
 
 module.exports = {
-    listar, actualizar, eliminar, consultarPorCodigo
+  listar,
+  actualizar,
+  eliminar,
+  consultarPorCodigo
 };

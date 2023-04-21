@@ -5,8 +5,7 @@ const listar = async function(textoBuscar) {
     console.log("listar temas");
     try{
         const themes = await sequelize.query(`SELECT * FROM themes 
-                                            WHERE 1=1
-                                            AND UPPER(name) LIKE UPPER('%${textoBuscar}')
+                                            WHERE UPPER(name) LIKE UPPER('%${textoBuscar}')
                                             ORDER BY id`);
     
         if(themes && themes[0]){
@@ -48,19 +47,27 @@ const actualizar = async function(id, create_date, name, descripcion, keywords, 
 const eliminar = async function(id) {
     console.log("eliminar temas");
     try{
-        await ThemeModel.destroy({where: {id:id}}, {truncate: false});
-    }catch(error){
+        const themes = await ThemeModel.findByPk(id);
+        if (themes) {
+          await ThemeModel.destroy({
+            where: { id: id },
+          });
+          return true;
+        } else {
+          return false;
+        }
+      } catch (error) {
         throw error;
-    }
+      }
 };
 
 const consultarPorCodigo = async function(id) {
     console.log("consultar por codigo");
     try{
-        const ThemeModelResult = await ThemeModel.findByPk(id);
+        const themes = await ThemeModel.findByPk(id);
 
-        if(ThemeModelResult){
-            return ThemeModelResult;
+        if(themes){
+            return themes;
         }else{
             return [];
         }
