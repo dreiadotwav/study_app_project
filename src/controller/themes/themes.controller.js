@@ -34,7 +34,7 @@ const actualizar = async function(req, res) {
         temaRetorno = await ThemeService.actualizar(req.body.id, 
                                                     req.body.create_date, 
                                                     req.body.name, 
-                                                    req.body.descripcion, 
+                                                    req.body.description, 
                                                     req.body.keywords, 
                                                     req.body.owner_user_id
                                                     );
@@ -54,7 +54,7 @@ const actualizar = async function(req, res) {
 const eliminar = async function(req, res) {
     console.log("eliminar temas");
     try{
-        const themes = await ThemeService.eliminar(req.query.filtro || "");
+        const themes = await ThemeService.eliminar(req.params.id);
         res.json({
             success: true
         });

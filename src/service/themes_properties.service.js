@@ -6,11 +6,10 @@ const listar = async function (textoBuscar) {
   console.log("listar themes properties service");
 
   try {
-    const theme_properties = await sequelize.query(
-      `SELECT * FROM themes_properties 
-        WHERE 1=1
-        AND property_name LIKE '%${textoBuscar}%'
-        ORDER BY id`
+    const theme_properties = await sequelize.query(`SELECT * FROM themes_properties 
+                                                    WHERE 1=1
+                                                    AND property_name LIKE '%${textoBuscar}%'
+                                                    ORDER BY id`
     );
 
     if (theme_properties) {
@@ -45,12 +44,15 @@ const consultarPorCodigo = async function (id) {
   }
 };
 
-const actualizar = async function (data) {
+const actualizar = async function (id, theme_id, property_name, property_value) {
   console.log("actualizar themes properties service");
   let themePropertyRetorno = null;
-  let tmsExiste = null;
-  const id = data.id;
+  const data = {id, theme_id, property_name, property_value}
+
   try {
+
+    let tmsExiste = null;
+
     if (id) {
       tmsExiste = await ThemePropertiesModel.findByPk(id);
     }
@@ -64,6 +66,7 @@ const actualizar = async function (data) {
     }
 
     return themePropertyRetorno;
+
   } catch (error) {
     console.log(error);
     throw error;

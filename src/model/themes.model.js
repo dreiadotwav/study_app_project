@@ -21,7 +21,7 @@ const ThemeModel = sequelize.define('themes', {
         allowNull: true
     },
 
-    descripcion: {
+    description: {
         type: DataTypes.STRING,
         allowNull: true
     },

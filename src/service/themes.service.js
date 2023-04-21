@@ -19,10 +19,10 @@ const listar = async function(textoBuscar) {
     }
 };
 
-const actualizar = async function(id, create_date, name, descripcion, keywords, owner_user_id) {
+const actualizar = async function(id, create_date, name, description, keywords, owner_user_id) {
     console.log("actualizar temas");
     let temaRetorno = null;
-    const data = {id, create_date, name, descripcion, keywords, owner_user_id}
+    const data = {id, create_date, name, description, keywords, owner_user_id}
 
     try{
         let thmExiste = null;
