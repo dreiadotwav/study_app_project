@@ -4,6 +4,7 @@ const app = express();
 app.use(bodyParser())
 
 const userRoute = require("./src/route/users/users.route");
+const themespropertiesRoute = require("./src/route/themes_properties/themes_properties.route");
  
 //Ruta raiz
 app.get('/', function (req, res) {
@@ -20,5 +21,6 @@ app.get('/pagina2', function (req, res) {
 
 //Llamadas a los routes de los UCs
 userRoute(app);
+themespropertiesRoute(app);
 
 app.listen(3000);
