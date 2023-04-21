@@ -6,8 +6,7 @@ const listar = async function(textoBuscar) {
     try{
         const topics = await sequelize.query(`SELECT * FROM topics 
                                             WHERE 1=1
-                                            AND UPPER(name) LIKE UPPER('%${textoBuscar}') 
-                                            AND deleted IS false
+                                            AND UPPER(name) LIKE UPPER('%${textoBuscar}')
                                             ORDER BY id`);
     
         if(topics && topics[0]){

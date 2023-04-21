@@ -1,5 +1,5 @@
 const {sequelize} = require("../../connection");
-const {ThemeModel} = require("../../model/theme.model");
+const {ThemeModel} = require("../../model/themes.model");
 const ThemeService = require("../../service/themes.service")
 
 const listar = async function (req, res) {

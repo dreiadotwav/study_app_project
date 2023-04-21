@@ -3,7 +3,7 @@ const {sequelize} = require("../connection");
 
 //uwu owo
 
-const ThemeModel = sequelize.define('theme', {
+const ThemeModel = sequelize.define('themes', {
     id:{
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -13,7 +13,7 @@ const ThemeModel = sequelize.define('theme', {
 
     create_date: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     },
 
     name: {

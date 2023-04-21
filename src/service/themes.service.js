@@ -1,13 +1,12 @@
 const {sequelize} = require("../connection");
-const {ThemeModel} = require("../model/theme.model");
+const {ThemeModel} = require("../model/themes.model");
 
 const listar = async function(textoBuscar) {
     console.log("listar temas");
     try{
         const themes = await sequelize.query(`SELECT * FROM themes 
                                             WHERE 1=1
-                                            AND UPPER(name) LIKE UPPER('%${textoBuscar}') 
-                                            AND deleted IS false
+                                            AND UPPER(name) LIKE UPPER('%${textoBuscar}')
                                             ORDER BY id`);
     
         if(themes && themes[0]){
