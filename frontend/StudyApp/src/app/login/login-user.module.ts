@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ViewMessagePage } from './view-message.page';
+import { LoginUserPage } from './login-user.page';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ViewMessagePageRoutingModule } from './view-message-routing.module';
+import { LoginUserPageRoutingModule } from './login-user-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewMessagePageRoutingModule
+    LoginUserPageRoutingModule
   ],
-  declarations: [ViewMessagePage]
+  declarations: [LoginUserPage]
 })
-export class ViewMessagePageModule {}
+export class LoginUserPageModule {}
