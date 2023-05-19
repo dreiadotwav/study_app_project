@@ -20,6 +20,8 @@
   </ion-header>
   
   <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
+    <ion-item *ngFor="let usuario of usuarios" [routerLink] = "'/message/' + usuario.id">
+      <ion-label>{{usuario.id}} - {{usuario.name}} - {{usuario.last_name}}</ion-label>
+    </ion-item>
   </ion-list>
 </ion-content>
