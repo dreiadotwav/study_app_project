@@ -15,6 +15,6 @@ module.exports = function(app) {
     app.post("/users/update", authMiddleware.auth, userController.actualizar);
     app.post("/users/delete/:id", authMiddleware.auth, userController.eliminar);
     //login/logout
-    app.post("/user/login", userController.login);
-    app.post("/user/logout", authMiddleware.auth, userController.logout);
+    app.post("/users/login", userController.login);
+    app.post("/users/logout", authMiddleware.auth, userController.logout);
 }

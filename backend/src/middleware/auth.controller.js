@@ -15,8 +15,10 @@ const auth = async function (req, res, next){
 
         let user = null;
 
-        if(usersDB.length> 0 && usersDB[0][0].length>0){
+        if(usersDB.length > 0 && usersDB[0].length > 0){
+
             user = usersDB[0][0];
+            
             console.log("Token del usuario", user);
 
             res.locals.userId = user.id;
