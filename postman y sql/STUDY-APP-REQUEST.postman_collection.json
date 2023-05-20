@@ -147,12 +147,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/topics/list",
+							"raw": "http://localhost:4200/topics/list",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "4200",
 							"path": [
 								"topics",
 								"list"
