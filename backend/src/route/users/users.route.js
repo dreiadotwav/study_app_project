@@ -8,7 +8,7 @@ module.exports = function(app) {
     app.post("/users/update", userController.actualizar);
     app.post("/users/delete/:id", userController.eliminar);
     app.post("/user/login", userController.login);
-    app.post("/user/login", userController.logout);*/
+    app.post("/user/logout", userController.logout);*/
 
     app.get("/users/list", authMiddleware.auth, userController.listar);
     app.get("/users/:id", authMiddleware.auth, userController.consultarPorCodigo);
@@ -16,5 +16,5 @@ module.exports = function(app) {
     app.post("/users/delete/:id", authMiddleware.auth, userController.eliminar);
     //login/logout
     app.post("/user/login", userController.login);
-    app.post("/user/login", authMiddleware.auth, userController.logout);
+    app.post("/user/logout", authMiddleware.auth, userController.logout);
 }

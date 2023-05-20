@@ -1,5 +1,5 @@
 const {sequelize} = require("../connection");
-const {TopicModel} = require("../model/topic.model");
+const {TopicModel} = require("../model/topics.model");
 
 const listar = async function(textoBuscar) {
     console.log("listar topicos");
@@ -48,7 +48,15 @@ const actualizar = async function(id, create_date, name, topic_id, order, priori
 const eliminar = async function(id) {
     console.log("eliminar topicos");
     try{
-        await TopicModel.destroy({where: {id:id}}, {truncate: false});
+        const topics = await TopicModel.findByPk(id);
+        if (topics) {
+            await TopicModel.destroy({
+                where: { id: id },
+              });
+          return true;
+        } else {
+          return false;
+        }
     }catch(error){
         throw error;
     }

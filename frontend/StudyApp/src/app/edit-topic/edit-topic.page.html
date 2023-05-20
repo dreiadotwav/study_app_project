@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="topicos">
+  <ion-item>
+    <ion-icon aria-hidden="true" name="person-circle" color="primary"></ion-icon>
+    <ion-label class="ion-text-wrap ">
+     
+     
+      <ion-list id="topics">
+        <ion-item>
+          <ion-input label="Nombre" placeholder="Nombre" id="nombre" [(ngModel)]= "topicos.name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Fecha de Creacion" placeholder="Fecha de Creacion" id="create_date" [(ngModel)]= "topicos.create_date "></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="ID del topico" placeholder="ID del topico" id="topic_id" [(ngModel)]= "topicos.topic_id"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Orden" placeholder="Orden" id="order" [(ngModel)]= "topicos.order"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Prioridad" placeholder="Prioridad" id="priority" [(ngModel)]= "topicos.priority"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Color" placeholder="Color" id="color" [(ngModel)]= "topicos.color"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input label="ID del usuario dueño" placeholder="ID del usuario dueño" id="owner_user_id" [(ngModel)]= "topicos.owner_user_id"></ion-input>
+        </ion-item>
+        
+      </ion-list>
+      
+    </ion-label>
+  </ion-item>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="saveTopic()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

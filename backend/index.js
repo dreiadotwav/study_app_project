@@ -10,6 +10,7 @@ app.use(cors({
 const userRoute = require("./src/route/users/users.route");
 const themeRoute = require("./src/route/themes/themes.route");
 const themespropertiesRoute = require("./src/route/themes_properties/themes_properties.route");
+const topicsRoute = require("./src/route/topics/topics.route")
  
 //Ruta raiz
 app.get('/', function (req, res) {
@@ -28,5 +29,6 @@ app.get('/pagina2', function (req, res) {
 userRoute(app);
 themespropertiesRoute(app);
 themeRoute(app);
+topicsRoute(app);
 
 app.listen(3000);

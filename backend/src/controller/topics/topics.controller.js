@@ -1,5 +1,5 @@
 const {sequelize} = require("../../connection");
-const {TopicModel} = require("../../model/topic.model");
+const {TopicModel} = require("../../model/topics.model");
 const TopicService = require("../../service/topics.service")
 
 const listar = async function (req, res) {
@@ -56,7 +56,7 @@ const actualizar = async function(req, res) {
 const eliminar = async function(req, res) {
     console.log("eliminar topicos");
     try{
-        const topics = await TopicService.eliminar(req.query.filtro || "");
+        const topics = await TopicService.eliminar(req.params.id);
         res.json({
             success: true
         });

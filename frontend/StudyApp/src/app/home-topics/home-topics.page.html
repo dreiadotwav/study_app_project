@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      StudyApp
+      Iria Orrego - Topics
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,20 +16,17 @@
       <ion-title size="large">
         StudyApp
       </ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="Logout()">
-          <ion-label>Logout</ion-label>
-        </ion-button>
-      </ion-buttons>
     </ion-toolbar>
   </ion-header>
   
   <ion-list>
-    <ion-item *ngFor="let usuario of usuarios" >
-      <ion-label [routerLink]="'/message/'+ usuario.id">{{usuario.id}} - {{ usuario.name}} - {{usuario.last_name}} </ion-label>
+    <ion-item *ngFor="let topico of topicos" >
+      <ion-label [routerLink]="'/message/'+ topico.id">{{topico.id}} - {{topico.create_date}} - {{ topico.name}} - {{topico.topic_id}} 
+        - {{topico.order}} - {{topico.priority}} - {{topico.color}} - {{topico.owner_user_id}}
+      </ion-label>
       
-      <ion-icon slot="end" name="create-outline" [routerLink]="'/edit-user/'+ usuario.id"></ion-icon>
-      <ion-icon slot="end" name="trash-outline" (click)="eliminar(usuario.id)"></ion-icon>
+      <ion-icon slot="end" name="create-outline" [routerLink]="'/edit-topic/'+ topico.id"></ion-icon>
+      <ion-icon slot="end" name="trash-outline" (click)="eliminar(topico.id)"></ion-icon>
     </ion-item>
     
    <!--
@@ -37,15 +34,13 @@
   --> 
   </ion-list>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-    <ion-fab-button routerLink="/edit-user/0">
+    <ion-fab-button routerLink="/edit-topic/0">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
   <ion-fab slot="fixed" vertical="bottom" horizontal="start">
-    <ion-fab-button routerLink="/home-topics">
-      <ion-icon name="book-outline"></ion-icon>
+    <ion-fab-button routerLink="/home">
+      <ion-icon name="home-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 </ion-content>
