@@ -69,7 +69,7 @@ export class EditTopicPage implements OnInit {
         
         await this.presentToast('Topico Guardado');
         this.topicos=result.data.topico;
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/home-topics"]);
       }else{
         await this.presentToast('Error '+result.data.error);
         
